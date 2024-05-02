@@ -1,5 +1,7 @@
 package com.sg.smn.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,4 +46,24 @@ public class UserController1 {
 	public String loginPage() {
 		return "Login";
 	}
+	
+	
+	@RequestMapping("/searchByName")
+	public String getFriends(String sname,Model model) {
+		System.err.println(sname);
+		List<UserData> list = userdao.getFriendsDetails(sname);
+		model.addAttribute("friendslist", list);
+		return "Home";
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
